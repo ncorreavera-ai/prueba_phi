@@ -3,40 +3,190 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Educativa</title>
+  <title>Ciberseguridad - Uso Seguro de Códigos QR</title>
+  <style>
+    :root {
+      --primary-color: #1b4965;   /* Azul marino institucional */
+      --accent-color: #00a8cc;    /* Turquesa institucional */
+      --warning-bg: #fff3cd;      /* Fondo de advertencia */
+      --warning-border: #ffeba2;  /* Borde de advertencia */
+      --warning-text: #856404;    /* Texto de advertencia */
+      --bg-color: #f4f7f6;
+      --card-bg: #ffffff;
+      --text-color: #2c3e50;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: var(--card-bg);
+      max-width: 650px;
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      border-top: 6px solid var(--accent-color);
+    }
+
+    .header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .header p {
+      font-size: 1rem;
+      color: #bee9e8;
+      font-weight: 500;
+    }
+
+    .content {
+      padding: 30px 25px;
+    }
+
+    .alert-box {
+      background-color: var(--warning-bg);
+      border-left: 5px solid var(--warning-text);
+      color: var(--warning-text);
+      padding: 18px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .message {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 25px;
+      color: #34495e;
+    }
+
+    .tips-title {
+      color: var(--primary-color);
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      border-bottom: 2px solid var(--accent-color);
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .tips-list {
+      list-style: none;
+      margin-bottom: 25px;
+    }
+
+    .tips-list li {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 12px;
+      line-height: 1.5;
+      font-size: 0.98rem;
+    }
+
+    .tips-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent-color);
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .footer-note {
+      background-color: #eef5f8;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: #5c6b73;
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      .header h1 { font-size: 1.4rem; }
+      .content { padding: 20px 15px; }
+    }
+  </style>
 </head>
 <body>
-  <h1>Bienvenido a la actividad educativa</h1>
-  <p>Tu visita ha sido registrada exitosamente para fines estadísticos.</p>
+
+  <div class="container">
+    <div class="header">
+      <h1>¡Atención! Campaña de Ciberseguridad</h1>
+      <p>Simulación de Concientización e Inteligencia Preventiva</p>
+    </div>
+
+    <div class="content">
+      <div class="alert-box">
+        ⚠️ Si este hubiera sido un ataque real (Quishing), tus datos personales o accesos institucionales habrían quedado expuestos.
+      </div>
+
+      <p class="message">
+        Has ingresado a una página de prueba educativa. Los códigos QR son una herramienta práctica, pero también pueden ser manipulados por ciberdelincuentes para redirigirte a sitios falsos, suplantar identidades o infectar tu dispositivo móvil.
+      </p>
+
+      <h2 class="tips-title">¿Cómo protegerte al escanear un QR?</h2>
+      <ul class="tips-list">
+        <li><strong>Desconfía del contexto:</strong> No escanees códigos QR impresos pegados sobre otros afiches o en lugares de acceso público sin verificación.</li>
+        <li><strong>Verifica la URL previa:</strong> Antes de abrir el enlace en tu navegador, revisa la vista previa de la dirección web. Asegúrate de que corresponda a un dominio oficial.</li>
+        <li><strong>Nunca ingreses credenciales:</strong> Un código QR seguro nunca debería exigirte de entrada contraseñas o datos bancarios.</li>
+        <li><strong>Reporta anomalías:</strong> Si detectas un código QR sospechoso dentro de las instalaciones, avisa al equipo de TI o Seguridad de la Información.</li>
+      </ul>
+
+      <div class="footer-note">
+        🔒 <em>Esta actividad es estrictamente educativa y no recolecta contraseñas ni información sensible. Tu ingreso ha sido contabilizado únicamente para métricas institucionales de concientización.</em>
+      </div>
+    </div>
+  </div>
 
   <script>
-    // Reemplaza esta URL con la URL de tu Web App de Apps Script
+    // ⚠️ REEMPLAZA LA SIGUIENTE URL CON TU URL DE GOOGLE APPS SCRIPT
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz46cV3T3jLKVrEfNx19GhDAnxFpCLLje2gq-SLxRV_IHUHHFwJQNNFpSOq3mIVCAo32Q/exec";
 
-    window.addEventListener("DOMContentLoaded", () => {
-      // Capturar parámetros de la URL (ej. ?origen=qr_sala1)
+    window.addEventListener("load", () => {
       const urlParams = new URLSearchParams(window.location.search);
-      const origen = urlParams.get('origen') || 'QR Predeterminado';
+      const origen = urlParams.get('origen') || 'QR General';
 
       const payload = {
         userAgent: navigator.userAgent,
         origen: origen
       };
 
-      // Envío silencioso mediante fetch
-      fetch(WEB_APP_URL, {
-        method: "POST",
-        mode: "no-cors", // Evita problemas de CORS con Apps Script
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-      }).then(() => {
-        console.log("Ingreso registrado");
-      }).catch(err => {
-        console.error("Error al registrar:", err);
-      });
+      if (WEB_APP_URL && WEB_APP_URL !== "AQUI_PEGA_TU_URL_DE_APPS_SCRIPT") {
+        fetch(WEB_APP_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain"
+          },
+          body: JSON.stringify(payload)
+        }).catch(err => console.error("Error al registrar:", err));
+      }
     });
   </script>
+
 </body>
 </html>
