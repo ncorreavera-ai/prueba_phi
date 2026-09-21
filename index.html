@@ -4,225 +4,229 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ciberseguridad - Uso Seguro de Códigos QR</title>
- <style>
-  :root {
-    --primary-color: #1b4965;   /* Azul marino institucional */
-    --accent-color: #00a8cc;    /* Turquesa institucional */
-    --warning-bg: #fff3cd;      /* Fondo de advertencia */
-    --warning-border: #ffeba2;  /* Borde de advertencia */
-    --warning-text: #856404;    /* Texto de advertencia */
-    --bg-color: #f4f7f6;
-    --card-bg: #ffffff;
-    --text-color: #2c3e50;
-  }
+  <style>
+    :root {
+      --primary-color: #1b4965;   /* Azul marino institucional */
+      --accent-color: #00a8cc;    /* Turquesa institucional */
+      --warning-bg: #fff3cd;      /* Fondo de advertencia */
+      --warning-border: #ffeba2;  /* Borde de advertencia */
+      --warning-text: #856404;    /* Texto de advertencia */
+      --bg-color: #f4f7f6;
+      --card-bg: #ffffff;
+      --text-color: #2c3e50;
+    }
 
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-  }
-
-  .container {
-    background-color: var(--card-bg);
-    max-width: 680px;
-    width: 100%;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    overflow: hidden;
-    border-top: 6px solid var(--accent-color);
-  }
-
-  .header {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 25px 20px;
-    text-align: center;
-  }
-
-  .logo-container {
-    margin-bottom: 15px;
-  }
-
-  .logo-img {
-    max-width: 220px;
-    height: auto;
-    background-color: #ffffff;
-    padding: 8px 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  }
-
-  .header h1 {
-    font-size: 1.7rem;
-    margin-bottom: 6px;
-    letter-spacing: 0.5px;
-  }
-
-  .header p {
-    font-size: 0.95rem;
-    color: #bee9e8;
-    font-weight: 500;
-  }
-
-  .content {
-    padding: 25px 20px;
-  }
-
-  .alert-box {
-    background-color: var(--warning-bg);
-    border-left: 5px solid var(--warning-text);
-    color: var(--warning-text);
-    padding: 16px;
-    border-radius: 8px;
-    margin-bottom: 25px;
-    font-weight: 600;
-    line-height: 1.5;
-  }
-
-  .characters-grid {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    background-color: #f8fafc;
-    border: 1px solid #e2e8f0;
-    padding: 15px;
-    border-radius: 12px;
-    margin-bottom: 25px;
-  }
-
-  .character-img {
-    width: 100px;
-    height: auto;
-    border-radius: 8px;
-    object-fit: contain;
-    flex-shrink: 0;
-  }
-
-  .message {
-    font-size: 0.98rem;
-    line-height: 1.5;
-    color: #34495e;
-    flex: 1;
-  }
-
-  .tips-section {
-    margin-bottom: 25px;
-  }
-
-  .tips-header {
-    border-bottom: 2px solid var(--accent-color);
-    padding-bottom: 8px;
-    margin-bottom: 15px;
-  }
-
-  .tips-title {
-    color: var(--primary-color);
-    font-size: 1.2rem;
-  }
-
-  /* Contenedor Flexbox principal para la sección de recomendaciones */
-  .tips-content {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
-  /* Columna izquierda que contiene la lista y el ejemplo del teléfono */
-  .tips-left-column {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .tips-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .tips-list li {
-    position: relative;
-    padding-left: 28px;
-    margin-bottom: 12px;
-    line-height: 1.5;
-    font-size: 0.95rem;
-  }
-
-  .tips-list li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: var(--accent-color);
-    font-weight: bold;
-    font-size: 1.1rem;
-  }
-
-  /* Contenedor e imagen para el teléfono con QR */
-  .example-img-container {
-    text-align: center;
-    margin-top: 5px;
-  }
-
-  .phone-qr-img {
-    max-width: 100%;       /* Evita que se salga del contenedor */
-    max-height: 220px;     /* Mantiene una altura controlada */
-    height: auto;          /* Mantiene la relación de aspecto */
-    border-radius: 10px;   /* Esquinas redondeadas suaves */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra estética */
-    border: 1px solid #e2e8f0;
-  }
-
-  /* Personaje de Meatball alineado a la derecha */
-  .tips-character-side {
-    width: 140px;
-    height: auto;
-    object-fit: contain;
-    flex-shrink: 0;
-  }
-
-  .footer-note {
-    background-color: #eef5f8;
-    padding: 15px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    color: #5c6b73;
-    text-align: center;
-  }
-
-  /* Adaptación para pantallas pequeñas (móviles) */
-  @media (max-width: 520px) {
-    .header h1 { font-size: 1.4rem; }
-    .characters-grid { flex-direction: column; text-align: center; }
-    .character-img { width: 120px; }
-    .content { padding: 20px 15px; }
-    
-    .tips-content {
-      flex-direction: column;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
       align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: var(--card-bg);
+      max-width: 680px;
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      border-top: 6px solid var(--accent-color);
+    }
+
+    .header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 25px 20px;
+      text-align: center;
+    }
+
+    .logo-container {
+      margin-bottom: 15px;
+    }
+
+    .logo-img {
+      max-width: 220px;
+      height: auto;
+      background-color: #ffffff;
+      padding: 8px 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .header h1 {
+      font-size: 1.7rem;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .header p {
+      font-size: 0.95rem;
+      color: #bee9e8;
+      font-weight: 500;
+    }
+
+    .content {
+      padding: 25px 20px;
+    }
+
+    .alert-box {
+      background-color: var(--warning-bg);
+      border-left: 5px solid var(--warning-text);
+      color: var(--warning-text);
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .characters-grid {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+    }
+
+    .character-img {
+      width: 100px;
+      height: auto;
+      border-radius: 8px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .message {
+      font-size: 0.98rem;
+      line-height: 1.5;
+      color: #34495e;
+      flex: 1;
+    }
+
+    .tips-section {
+      margin-bottom: 25px;
+    }
+
+    .tips-header {
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+    }
+
+    .tips-title {
+      color: var(--primary-color);
+      font-size: 1.2rem;
+    }
+
+    /* Sección Flexbox donde Meatball se mantiene a la derecha de la lista */
+    .tips-content {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .tips-list {
+      list-style: none;
+      flex: 1;
+      margin: 0;
+      padding: 0;
+    }
+
+    .tips-list li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 12px;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    .tips-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent-color);
+      font-weight: bold;
+      font-size: 1.1rem;
     }
 
     .tips-character-side {
-      width: 110px;
+      width: 140px;
+      height: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    /* Nueva sección independiente para la imagen del teléfono */
+    .example-section {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .example-subtitle {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 12px;
     }
 
     .phone-qr-img {
-      max-height: 180px;
+      max-width: 100%;       /* Ocupa hasta el ancho completo del contenedor */
+      max-height: 380px;     /* Tamaño más grande e independiente para mayor visibilidad */
+      width: auto;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+      border: 1px solid #cbd5e1;
     }
-  }
-</style>
+
+    .footer-note {
+      background-color: #eef5f8;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: #5c6b73;
+      text-align: center;
+    }
+
+    /* Adaptación para dispositivos móviles */
+    @media (max-width: 520px) {
+      .header h1 { font-size: 1.4rem; }
+      .characters-grid { flex-direction: column; text-align: center; }
+      .character-img { width: 120px; }
+      .content { padding: 20px 15px; }
+      
+      .tips-content {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .tips-character-side {
+        width: 110px;
+      }
+
+      .phone-qr-img {
+        max-height: 280px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -232,47 +236,46 @@
         <!-- Logo Institucional -->
         <img src="logoHospitalRegional.jpg" alt="Hospital Regional de Ñuble" class="logo-img">
       </div>
-      <h1><strong>¡CAÍSTE!</strong></h1>
-      <p>Pero tranquilidad, esto es solo una simulación para concientizar</p>
+      <h1>¡Atención! Campaña de Ciberseguridad</h1>
+      <p>Simulación de Concientización e Inteligencia Preventiva</p>
     </div>
 
     <div class="content">
       <div class="alert-box">
-        ⚠️ Si este hubiera sido un ataque real (Quishing (estafa con código QR)), tus datos personales o accesos institucionales habrían quedado expuestos.
+        ⚠️ Si este hubiera sido un ataque real (Quishing), tus datos personales o accesos institucionales habrían quedado expuestos.
       </div>
 
       <!-- Sección con Napoleon -->
       <div class="characters-grid">
-        <img src="napoleon.jpg" alt="N - Agente de Ciberseguridad" class="character-img">
+        <img src="napoleon.jpg" alt="Napoleon - Agente de Ciberseguridad" class="character-img">
         <p class="message">
-          <strong>Consejos:</strong> Has ingresado a una prueba educativa. Los códigos QR son muy prácticos, pero los ciberdelincuentes pueden usarlos para redirigirte a sitios falsos, suplantar identidades o infectar tus dispositivos.
+          <strong>Napoleon te aconseja:</strong> Has ingresado a una prueba educativa. Los códigos QR son muy prácticos, pero los ciberdelincuentes pueden usarlos para redirigirte a sitios falsos, suplantar identidades o infectar tus dispositivos.
         </p>
       </div>
 
-      <!-- Sección de Recomendaciones con Meatball a la derecha -->
+      <!-- Sección de Recomendaciones con Meatball a la derecha de la lista -->
       <div class="tips-section">
         <div class="tips-header">
           <h2 class="tips-title">Recomendaciones:</h2>
         </div>
         
-<div class="tips-content">
-  <div class="tips-left-column">
-    <ul class="tips-list">
-      <li><strong>Desconfía del contexto:</strong> No escanees códigos QR impresos pegados sobre otros afiches o en lugares de acceso público sin verificación.</li>
-      <li><strong>Nunca ingreses credenciales:</strong> Si encuentras un QR en la calle o lugar público nunca debes ingresar contraseñas, datos personales o bancarios.</li>
-      <li><strong>Reporta anomalías:</strong> Si detectas un código QR sospechoso dentro de las instalaciones, avisa de inmediato al Departamento TIC del Hospital.</li>
-      <li><strong>Verifica la URL previa:</strong> Antes de abrir el enlace en tu navegador, revisa la vista previa de la dirección web. Asegúrate de que corresponda a un dominio oficial, ejemplo: www.gob.cl, www.redsalud.gob.cl.</li>
-    </ul>
+        <div class="tips-content">
+          <ul class="tips-list">
+            <li><strong>Desconfía del contexto:</strong> No escanees códigos QR impresos pegados sobre otros afiches o en lugares de acceso público sin verificación.</li>
+            <li><strong>Nunca ingreses credenciales:</strong> Si encuentras un QR en la calle o lugar público nunca debes ingresar contraseñas, datos personales o bancarios.</li>
+            <li><strong>Reporta anomalías:</strong> Si detectas un código QR sospechoso dentro de las instalaciones, avisa de inmediato al Departamento TIC del Hospital.</li>
+            <li><strong>Verifica la URL previa:</strong> Antes de abrir el enlace en tu navegador, revisa la vista previa de la dirección web. Asegúrate de que corresponda a un dominio oficial, ejemplo: www.gob.cl, www.redsalud.gob.cl.</li>
+          </ul>
 
-    <!-- Imagen ajustada debajo de la lista pero dentro de la columna izquierda -->
-    <div class="example-img-container">
-      <img src="telefonoQR.jpg" alt="Ejemplo de verificación de URL en teléfono" class="phone-qr-img">
-    </div>
-  </div>
+          <!-- Imagen de Meatball a la derecha -->
+          <img src="meatball.jpg" alt="Meatball - Agente de Ciberseguridad" class="tips-character-side">
+        </div>
+      </div>
 
-  <!-- Imagen de Meatball a la derecha -->
-  <img src="meatball.jpg" alt="Meatball - Agente de Ciberseguridad" class="tips-character-side">
-</div>
+      <!-- Sección Independiente para la Imagen de Demostración del Teléfono -->
+      <div class="example-section">
+        <p class="example-subtitle">Ejemplo visual de verificación de enlace seguro en tu dispositivo:</p>
+        <img src="telefonoQR.jpg" alt="Verificación de URL en dispositivo móvil" class="phone-qr-img">
       </div>
 
       <div class="footer-note">
