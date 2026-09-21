@@ -4,197 +4,225 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ciberseguridad - Uso Seguro de Códigos QR</title>
-  <style>
-    :root {
-      --primary-color: #1b4965;   /* Azul marino institucional */
-      --accent-color: #00a8cc;    /* Turquesa institucional */
-      --warning-bg: #fff3cd;      /* Fondo de advertencia */
-      --warning-border: #ffeba2;  /* Borde de advertencia */
-      --warning-text: #856404;    /* Texto de advertencia */
-      --bg-color: #f4f7f6;
-      --card-bg: #ffffff;
-      --text-color: #2c3e50;
-    }
+ <style>
+  :root {
+    --primary-color: #1b4965;   /* Azul marino institucional */
+    --accent-color: #00a8cc;    /* Turquesa institucional */
+    --warning-bg: #fff3cd;      /* Fondo de advertencia */
+    --warning-border: #ffeba2;  /* Borde de advertencia */
+    --warning-text: #856404;    /* Texto de advertencia */
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-color: #2c3e50;
+  }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
 
-    .container {
-      background-color: var(--card-bg);
-      max-width: 680px;
-      width: 100%;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
-      border-top: 6px solid var(--accent-color);
-    }
+  .container {
+    background-color: var(--card-bg);
+    max-width: 680px;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    border-top: 6px solid var(--accent-color);
+  }
 
-    .header {
-      background-color: var(--primary-color);
-      color: white;
-      padding: 25px 20px;
-      text-align: center;
-    }
+  .header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 25px 20px;
+    text-align: center;
+  }
 
-    .logo-container {
-      margin-bottom: 15px;
-    }
+  .logo-container {
+    margin-bottom: 15px;
+  }
 
-    .logo-img {
-      max-width: 220px;
-      height: auto;
-      background-color: #ffffff;
-      padding: 8px 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    }
+  .logo-img {
+    max-width: 220px;
+    height: auto;
+    background-color: #ffffff;
+    padding: 8px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
 
-    .header h1 {
-      font-size: 1.7rem;
-      margin-bottom: 6px;
-      letter-spacing: 0.5px;
-    }
+  .header h1 {
+    font-size: 1.7rem;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
 
-    .header p {
-      font-size: 0.95rem;
-      color: #bee9e8;
-      font-weight: 500;
-    }
+  .header p {
+    font-size: 0.95rem;
+    color: #bee9e8;
+    font-weight: 500;
+  }
 
-    .content {
-      padding: 25px 20px;
-    }
+  .content {
+    padding: 25px 20px;
+  }
 
-    .alert-box {
-      background-color: var(--warning-bg);
-      border-left: 5px solid var(--warning-text);
-      color: var(--warning-text);
-      padding: 16px;
-      border-radius: 8px;
-      margin-bottom: 25px;
-      font-weight: 600;
-      line-height: 1.5;
-    }
+  .alert-box {
+    background-color: var(--warning-bg);
+    border-left: 5px solid var(--warning-text);
+    color: var(--warning-text);
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    line-height: 1.5;
+  }
 
-    .characters-grid {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      background-color: #f8fafc;
-      border: 1px solid #e2e8f0;
-      padding: 15px;
-      border-radius: 12px;
-      margin-bottom: 25px;
-    }
+  .characters-grid {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+  }
 
-    .character-img {
-      width: 100px;
-      height: auto;
-      border-radius: 8px;
-      object-fit: contain;
-      flex-shrink: 0;
-    }
+  .character-img {
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
 
-    .message {
-      font-size: 0.98rem;
-      line-height: 1.5;
-      color: #34495e;
-      flex: 1;
-    }
+  .message {
+    font-size: 0.98rem;
+    line-height: 1.5;
+    color: #34495e;
+    flex: 1;
+  }
 
-    .tips-section {
-      margin-bottom: 25px;
-    }
+  .tips-section {
+    margin-bottom: 25px;
+  }
 
-    .tips-header {
-      border-bottom: 2px solid var(--accent-color);
-      padding-bottom: 8px;
-      margin-bottom: 15px;
-    }
+  .tips-header {
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+  }
 
-    .tips-title {
-      color: var(--primary-color);
-      font-size: 1.2rem;
-    }
+  .tips-title {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+  }
 
-    /* Contenedor Flexbox para colocar la lista y Meatball lado a lado */
+  /* Contenedor Flexbox principal para la sección de recomendaciones */
+  .tips-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* Columna izquierda que contiene la lista y el ejemplo del teléfono */
+  .tips-left-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .tips-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .tips-list li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    font-size: 0.95rem;
+  }
+
+  .tips-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+
+  /* Contenedor e imagen para el teléfono con QR */
+  .example-img-container {
+    text-align: center;
+    margin-top: 5px;
+  }
+
+  .phone-qr-img {
+    max-width: 100%;       /* Evita que se salga del contenedor */
+    max-height: 220px;     /* Mantiene una altura controlada */
+    height: auto;          /* Mantiene la relación de aspecto */
+    border-radius: 10px;   /* Esquinas redondeadas suaves */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra estética */
+    border: 1px solid #e2e8f0;
+  }
+
+  /* Personaje de Meatball alineado a la derecha */
+  .tips-character-side {
+    width: 140px;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .footer-note {
+    background-color: #eef5f8;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: #5c6b73;
+    text-align: center;
+  }
+
+  /* Adaptación para pantallas pequeñas (móviles) */
+  @media (max-width: 520px) {
+    .header h1 { font-size: 1.4rem; }
+    .characters-grid { flex-direction: column; text-align: center; }
+    .character-img { width: 120px; }
+    .content { padding: 20px 15px; }
+    
     .tips-content {
-      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 20px;
-    }
-
-    .tips-list {
-      list-style: none;
-      flex: 1;
-      margin: 0;
-    }
-
-    .tips-list li {
-      position: relative;
-      padding-left: 28px;
-      margin-bottom: 12px;
-      line-height: 1.5;
-      font-size: 0.95rem;
-    }
-
-    .tips-list li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--accent-color);
-      font-weight: bold;
-      font-size: 1.1rem;
     }
 
     .tips-character-side {
-      width: 140px;
-      height: auto;
-      object-fit: contain;
-      flex-shrink: 0;
+      width: 110px;
     }
 
-    .footer-note {
-      background-color: #eef5f8;
-      padding: 15px;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      color: #5c6b73;
-      text-align: center;
+    .phone-qr-img {
+      max-height: 180px;
     }
-
-    /* Adaptación para pantallas pequeñas (móviles) */
-    @media (max-width: 520px) {
-      .header h1 { font-size: 1.4rem; }
-      .characters-grid { flex-direction: column; text-align: center; }
-      .character-img { width: 120px; }
-      .content { padding: 20px 15px; }
-      
-      .tips-content {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .tips-character-side {
-        width: 110px;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
