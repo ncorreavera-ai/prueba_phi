@@ -162,8 +162,7 @@
     </div>
   </div>
 
-  <script>
-    // ⚠️ REEMPLAZA LA SIGUIENTE URL CON TU URL DE GOOGLE APPS SCRIPT
+<script>
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz46cV3T3jLKVrEfNx19GhDAnxFpCLLje2gq-SLxRV_IHUHHFwJQNNFpSOq3mIVCAo32Q/exec";
 
     window.addEventListener("load", () => {
@@ -175,7 +174,8 @@
         origen: origen
       };
 
-      if (WEB_APP_URL && WEB_APP_URL !== "https://script.google.com/macros/s/AKfycbz46cV3T3jLKVrEfNx19GhDAnxFpCLLje2gq-SLxRV_IHUHHFwJQNNFpSOq3mIVCAo32Q/exec") {
+      // Se ejecuta siempre que exista una URL definida
+      if (WEB_APP_URL) {
         fetch(WEB_APP_URL, {
           method: "POST",
           mode: "no-cors",
@@ -183,10 +183,11 @@
             "Content-Type": "text/plain"
           },
           body: JSON.stringify(payload)
+        }).then(() => {
+          console.log("Petición enviada correctamente");
         }).catch(err => console.error("Error al registrar:", err));
       }
     });
   </script>
-
 </body>
 </html>
