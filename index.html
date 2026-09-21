@@ -170,7 +170,7 @@
       flex-shrink: 0;
     }
 
-    /* Nueva sección independiente para la imagen del teléfono */
+    /* Sección independiente para la imagen del teléfono */
     .example-section {
       background-color: #f8fafc;
       border: 1px solid #e2e8f0;
@@ -187,14 +187,78 @@
       margin-bottom: 12px;
     }
 
+    /* Imagen interactiva (click para agrandar) */
     .phone-qr-img {
-      max-width: 100%;       /* Ocupa hasta el ancho completo del contenedor */
-      max-height: 380px;     /* Tamaño más grande e independiente para mayor visibilidad */
+      max-width: 100%;
+      max-height: 380px;
       width: auto;
       height: auto;
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
       border: 1px solid #cbd5e1;
+      cursor: zoom-in;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .phone-qr-img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+    }
+
+    .zoom-hint {
+      display: block;
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-top: 8px;
+    }
+
+    /* Estilos del Modal Lightbox */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(4px);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      cursor: zoom-out;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-modal img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      color: #ffffff;
+      font-size: 35px;
+      font-weight: bold;
+      cursor: pointer;
+      user-select: none;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .lightbox-close:hover {
+      color: var(--accent-color);
     }
 
     .footer-note {
@@ -275,16 +339,24 @@
       <!-- Sección Independiente para la Imagen de Demostración del Teléfono -->
       <div class="example-section">
         <p class="example-subtitle">Ejemplo visual de verificación de enlace seguro en tu dispositivo:</p>
-        <img src="telefonoQR.jpg" alt="Verificación de URL en dispositivo móvil" class="phone-qr-img">
+        <img src="telefonoQR.jpg" alt="Verificación de URL en dispositivo móvil" class="phone-qr-img" id="zoomableImg">
+        <span class="zoom-hint">🔍 Haz clic en la imagen para ampliarla</span>
       </div>
 
       <div class="footer-note">
-        🔒 <em>Esta actividad es estrictamente educativa y no recolecta contraseñas ni información sensible. Tu ingreso ha sido contabilizado únicamente para métricas institucionales de concientización.</em>
+        🔒 <em>Esta actividad es strictly educativa y no recolecta contraseñas ni información sensible. Tu ingreso ha sido contabilizado únicamente para métricas institucionales de concientización.</em>
       </div>
     </div>
   </div>
 
+  <!-- Modal de Ampliación (Lightbox) -->
+  <div class="lightbox-modal" id="lightboxModal">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <img src="telefonoQR.jpg" alt="Verificación de URL ampliada" id="lightboxImg">
+  </div>
+
   <script>
+    // Configuración de la métrica de Apps Script
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz46cV3T3jLKVrEfNx19GhDAnxFpCLLje2gq-SLxRV_IHUHHFwJQNNFpSOq3mIVCAo32Q/exec";
 
     window.addEventListener("load", () => {
@@ -307,6 +379,25 @@
         }).then(() => {
           console.log("Petición enviada correctamente");
         }).catch(err => console.error("Error al registrar:", err));
+      }
+    });
+
+    // Lógica para ampliar la imagen (Lightbox)
+    const zoomableImg = document.getElementById('zoomableImg');
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    zoomableImg.addEventListener('click', () => {
+      lightboxModal.classList.add('active');
+    });
+
+    lightboxModal.addEventListener('click', () => {
+      lightboxModal.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightboxModal.classList.contains('active')) {
+        lightboxModal.classList.remove('active');
       }
     });
   </script>
