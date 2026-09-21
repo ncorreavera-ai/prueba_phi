@@ -35,7 +35,7 @@
 
     .container {
       background-color: var(--card-bg);
-      max-width: 650px;
+      max-width: 680px;
       width: 100%;
       border-radius: 16px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -46,51 +46,96 @@
     .header {
       background-color: var(--primary-color);
       color: white;
-      padding: 30px 20px;
+      padding: 25px 20px;
       text-align: center;
     }
 
+    .logo-container {
+      margin-bottom: 15px;
+    }
+
+    .logo-img {
+      max-width: 220px;
+      height: auto;
+      background-color: #ffffff;
+      padding: 8px 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
     .header h1 {
-      font-size: 1.8rem;
-      margin-bottom: 8px;
+      font-size: 1.7rem;
+      margin-bottom: 6px;
       letter-spacing: 0.5px;
     }
 
     .header p {
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: #bee9e8;
       font-weight: 500;
     }
 
     .content {
-      padding: 30px 25px;
+      padding: 25px 20px;
     }
 
     .alert-box {
       background-color: var(--warning-bg);
       border-left: 5px solid var(--warning-text);
       color: var(--warning-text);
-      padding: 18px;
+      padding: 16px;
       border-radius: 8px;
       margin-bottom: 25px;
       font-weight: 600;
       line-height: 1.5;
     }
 
-    .message {
-      font-size: 1.05rem;
-      line-height: 1.6;
+    .characters-grid {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      padding: 15px;
+      border-radius: 12px;
       margin-bottom: 25px;
+    }
+
+    .character-img {
+      width: 100px;
+      height: auto;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+
+    .message {
+      font-size: 0.98rem;
+      line-height: 1.5;
       color: #34495e;
+      flex: 1;
+    }
+
+    .tips-section {
+      position: relative;
+    }
+
+    .tips-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 8px;
+      margin-bottom: 15px;
     }
 
     .tips-title {
       color: var(--primary-color);
       font-size: 1.2rem;
-      margin-bottom: 15px;
-      border-bottom: 2px solid var(--accent-color);
-      display: inline-block;
-      padding-bottom: 4px;
+    }
+
+    .tips-character {
+      width: 75px;
+      height: auto;
     }
 
     .tips-list {
@@ -100,10 +145,10 @@
 
     .tips-list li {
       position: relative;
-      padding-left: 30px;
+      padding-left: 28px;
       margin-bottom: 12px;
       line-height: 1.5;
-      font-size: 0.98rem;
+      font-size: 0.95rem;
     }
 
     .tips-list li::before {
@@ -125,8 +170,10 @@
       text-align: center;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 520px) {
       .header h1 { font-size: 1.4rem; }
+      .characters-grid { flex-direction: column; text-align: center; }
+      .character-img { width: 120px; }
       .content { padding: 20px 15px; }
     }
   </style>
@@ -135,6 +182,10 @@
 
   <div class="container">
     <div class="header">
+      <div class="logo-container">
+        <!-- Logo Institucional -->
+        <img src="logoHospitalRegional.jpg" alt="Hospital Regional de Ñuble" class="logo-img">
+      </div>
       <h1>¡Atención! Campaña de Ciberseguridad</h1>
       <p>Simulación de Concientización e Inteligencia Preventiva</p>
     </div>
@@ -144,17 +195,27 @@
         ⚠️ Si este hubiera sido un ataque real (Quishing), tus datos personales o accesos institucionales habrían quedado expuestos.
       </div>
 
-      <p class="message">
-        Has ingresado a una página de prueba educativa. Los códigos QR son una herramienta práctica, pero también pueden ser manipulados por ciberdelincuentes para redirigirte a sitios falsos, suplantar identidades o infectar tu dispositivo móvil.
-      </p>
+      <!-- Sección con Meatball -->
+      <div class="characters-grid">
+        <img src="meatball.png" alt="Meatball - Agente de Ciberseguridad" class="character-img">
+        <p class="message">
+          <strong>Meatball te aconseja:</strong> Has ingresado a una prueba educativa. Los códigos QR son muy prácticos, pero los ciberdelincuentes pueden usarlos para redirigirte a sitios falsos, suplantar identidades o infectar tus dispositivos.
+        </p>
+      </div>
 
-      <h2 class="tips-title">¿Cómo protegerte al escanear un QR?</h2>
-      <ul class="tips-list">
-        <li><strong>Desconfía del contexto:</strong> No escanees códigos QR impresos pegados sobre otros afiches o en lugares de acceso público sin verificación.</li>
-        <li><strong>Verifica la URL previa:</strong> Antes de abrir el enlace en tu navegador, revisa la vista previa de la dirección web. Asegúrate de que corresponda a un dominio oficial.</li>
-        <li><strong>Nunca ingreses credenciales:</strong> Un código QR seguro nunca debería exigirte de entrada contraseñas o datos bancarios.</li>
-        <li><strong>Reporta anomalías:</strong> Si detectas un código QR sospechoso dentro de las instalaciones, avisa al equipo de TI o Seguridad de la Información.</li>
-      </ul>
+      <!-- Sección con Napoleon -->
+      <div class="tips-section">
+        <div class="tips-header">
+          <h2 class="tips-title">Recomendaciones de Napoleon:</h2>
+          <img src="napoleon.png" alt="Napoleon - Agente de Ciberseguridad" class="tips-character">
+        </div>
+        <ul class="tips-list">
+          <li><strong>Desconfía del contexto:</strong> No escanees códigos QR impresos pegados sobre otros afiches o en lugares de acceso público sin verificación.</li>
+          <li><strong>Verifica la URL previa:</strong> Antes de abrir el enlace en tu navegador, revisa la vista previa de la dirección web. Asegúrate de que corresponda a un dominio oficial.</li>
+          <li><strong>Nunca ingreses credenciales:</strong> Un código QR seguro nunca debería exigirte contraseñas ni datos bancarios.</li>
+          <li><strong>Reporta anomalías:</strong> Si detectas un código QR sospechoso dentro de las instalaciones, avisa de inmediato al equipo de TI o Ciberseguridad.</li>
+        </ul>
+      </div>
 
       <div class="footer-note">
         🔒 <em>Esta actividad es estrictamente educativa y no recolecta contraseñas ni información sensible. Tu ingreso ha sido contabilizado únicamente para métricas institucionales de concientización.</em>
@@ -162,7 +223,7 @@
     </div>
   </div>
 
-<script>
+  <script>
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz46cV3T3jLKVrEfNx19GhDAnxFpCLLje2gq-SLxRV_IHUHHFwJQNNFpSOq3mIVCAo32Q/exec";
 
     window.addEventListener("load", () => {
@@ -174,7 +235,6 @@
         origen: origen
       };
 
-      // Se ejecuta siempre que exista una URL definida
       if (WEB_APP_URL) {
         fetch(WEB_APP_URL, {
           method: "POST",
@@ -189,5 +249,6 @@
       }
     });
   </script>
+
 </body>
 </html>
