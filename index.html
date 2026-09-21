@@ -135,8 +135,8 @@
 
   <div class="container">
     <div class="header">
-      <h1>¡ATENCIÓN! ¡CAÍSTE!</h1>
-      <p>¡Pero tranquilidad!, esto es una simulación para la Concientización y Prevención en CIBERSEGURIDAD</p>
+      <h1>¡Atención! Campaña de Ciberseguridad</h1>
+      <p>Simulación de Concientización e Inteligencia Preventiva</p>
     </div>
 
     <div class="content">
@@ -145,7 +145,7 @@
       </div>
 
       <p class="message">
-        Los códigos QR son una herramienta práctica, pero también pueden ser manipulados por ciberdelincuentes para redirigirte a sitios falsos, suplantar identidades o infectar tu dispositivo móvil.
+        Has ingresado a una página de prueba educativa. Los códigos QR son una herramienta práctica, pero también pueden ser manipulados por ciberdelincuentes para redirigirte a sitios falsos, suplantar identidades o infectar tu dispositivo móvil.
       </p>
 
       <h2 class="tips-title">¿Cómo protegerte al escanear un QR?</h2>
@@ -153,7 +153,7 @@
         <li><strong>Desconfía del contexto:</strong> No escanees códigos QR impresos pegados sobre otros afiches o en lugares de acceso público sin verificación.</li>
         <li><strong>Verifica la URL previa:</strong> Antes de abrir el enlace en tu navegador, revisa la vista previa de la dirección web. Asegúrate de que corresponda a un dominio oficial.</li>
         <li><strong>Nunca ingreses credenciales:</strong> Un código QR seguro nunca debería exigirte de entrada contraseñas o datos bancarios.</li>
-        <li><strong>Reporta anomalías:</strong> Si detectas un código QR sospechoso dentro de las instalaciones, avisa al Departamento TIC del Hospital</li>
+        <li><strong>Reporta anomalías:</strong> Si detectas un código QR sospechoso dentro de las instalaciones, avisa al equipo de TI o Seguridad de la Información.</li>
       </ul>
 
       <div class="footer-note">
@@ -164,7 +164,7 @@
 
   <script>
     // ⚠️ REEMPLAZA LA SIGUIENTE URL CON TU URL DE GOOGLE APPS SCRIPT
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz46cV3T3jLKVrEfNx19GhDAnxFpCLLje2gq-SLxRV_IHUHHFwJQNNFpSOq3mIVCAo32Q/exec";
+    const WEB_APP_URL = "AQUI_PEGA_TU_URL_DE_APPS_SCRIPT";
 
     window.addEventListener("load", () => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -175,7 +175,7 @@
         origen: origen
       };
 
-      if (WEB_APP_URL && WEB_APP_URL !== "AQUI_PEGA_TU_URL_DE_APPS_SCRIPT") {
+      if (WEB_APP_URL && WEB_APP_URL !== "https://script.google.com/macros/s/AKfycbz46cV3T3jLKVrEfNx19GhDAnxFpCLLje2gq-SLxRV_IHUHHFwJQNNFpSOq3mIVCAo32Q/exec") {
         fetch(WEB_APP_URL, {
           method: "POST",
           mode: "no-cors",
