@@ -106,6 +106,7 @@
       height: auto;
       border-radius: 8px;
       object-fit: contain;
+      flex-shrink: 0;
     }
 
     .message {
@@ -116,13 +117,10 @@
     }
 
     .tips-section {
-      position: relative;
+      margin-bottom: 25px;
     }
 
     .tips-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       border-bottom: 2px solid var(--accent-color);
       padding-bottom: 8px;
       margin-bottom: 15px;
@@ -133,14 +131,17 @@
       font-size: 1.2rem;
     }
 
-    .tips-character {
-      width: 75px;
-      height: auto;
+    /* Contenedor Flexbox para colocar la lista y Meatball lado a lado */
+    .tips-content {
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
 
     .tips-list {
       list-style: none;
-      margin-bottom: 25px;
+      flex: 1;
+      margin: 0;
     }
 
     .tips-list li {
@@ -161,6 +162,13 @@
       font-size: 1.1rem;
     }
 
+    .tips-character-side {
+      width: 140px;
+      height: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
     .footer-note {
       background-color: #eef5f8;
       padding: 15px;
@@ -170,11 +178,21 @@
       text-align: center;
     }
 
+    /* Adaptación para pantallas pequeñas (móviles) */
     @media (max-width: 520px) {
       .header h1 { font-size: 1.4rem; }
       .characters-grid { flex-direction: column; text-align: center; }
       .character-img { width: 120px; }
       .content { padding: 20px 15px; }
+      
+      .tips-content {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .tips-character-side {
+        width: 110px;
+      }
     }
   </style>
 </head>
@@ -195,30 +213,35 @@
         ⚠️ Si este hubiera sido un ataque real (Quishing), tus datos personales o accesos institucionales habrían quedado expuestos.
       </div>
 
-      <!-- Sección con Meatball -->
+      <!-- Sección con Napoleon -->
       <div class="characters-grid">
-        <img src="meatball.jpg" alt="M - Agente de Ciberseguridad" class="character-img">
+        <img src="napoleon.jpg" alt="Napoleon - Agente de Ciberseguridad" class="character-img">
         <p class="message">
-          <strong>Has ingresado a una prueba educativa. Los códigos QR son muy prácticos, pero los ciberdelincuentes pueden usarlos para redirigirte a sitios falsos, suplantar identidades o infectar tus dispositivos.</strong>
+          <strong>Napoleon te aconseja:</strong> Has ingresado a una prueba educativa. Los códigos QR son muy prácticos, pero los ciberdelincuentes pueden usarlos para redirigirte a sitios falsos, suplantar identidades o infectar tus dispositivos.
         </p>
       </div>
 
-      <!-- Sección con Napoleon -->
+      <!-- Sección de Recomendaciones con Meatball a la derecha -->
       <div class="tips-section">
         <div class="tips-header">
           <h2 class="tips-title">Recomendaciones:</h2>
-          <img src="napoleon.jpg" alt="N - Agente de Ciberseguridad" class="tips-character">
         </div>
-        <ul class="tips-list">
-          <li><strong>Desconfía del contexto:</strong> No escanees códigos QR impresos pegados sobre otros afiches o en lugares de acceso público sin verificación.</li>
-          <li><strong>Verifica la URL previa:</strong> Antes de abrir el enlace en tu navegador, revisa la vista previa de la dirección web. Asegúrate de que corresponda a un dominio oficial.</li>
-          <li><strong>Nunca ingreses credenciales:</strong> Un código QR seguro nunca debería exigirte contraseñas ni datos bancarios.</li>
-          <li><strong>Reporta anomalías:</strong> Si detectas un código QR sospechoso dentro de las instalaciones, avisa de inmediato al equipo de TI o Ciberseguridad.</li>
-        </ul>
+        
+        <div class="tips-content">
+          <ul class="tips-list">
+            <li><strong>Desconfía del contexto:</strong> No escanees códigos QR impresos pegados sobre otros afiches o en lugares de acceso público sin verificación.</li>
+            <li><strong>Verifica la URL previa:</strong> Antes de abrir el enlace en tu navegador, revisa la vista previa de la dirección web. Asegúrate de que corresponda a un dominio oficial.</li>
+            <li><strong>Nunca ingreses credenciales:</strong> Un código QR seguro nunca debería exigirte contraseñas ni datos bancarios.</li>
+            <li><strong>Reporta anomalías:</strong> Si detectas un código QR sospechoso dentro de las instalaciones, avisa de inmediato al equipo de TI o Ciberseguridad.</li>
+          </ul>
+
+          <!-- Imagen de Meatball a la derecha -->
+          <img src="meatball.jpg" alt="Meatball - Agente de Ciberseguridad" class="tips-character-side">
+        </div>
       </div>
 
       <div class="footer-note">
-        🔒 <em>Esta actividad es estrictamente educativa y no recolecta contraseñas ni información sensible. Tu ingreso ha sido contabilizado únicamente para métricas institucionales de concientización.</em>
+        🔒 <em>Esta actividad es strictly educativa y no recolecta contraseñas ni información sensible. Tu ingreso ha sido contabilizado únicamente para métricas institucionales de concientización.</em>
       </div>
     </div>
   </div>
