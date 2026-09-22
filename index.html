@@ -321,6 +321,87 @@
       text-align: center;
     }
 
+    /* --- Estilos para el Pop-up de Alerta Inicial --- */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(5px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      padding: 20px;
+    }
+
+    .popup-card {
+      background-color: #ffffff;
+      max-width: 480px;
+      width: 100%;
+      border-radius: 16px;
+      padding: 25px 20px;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      border-top: 6px solid var(--danger-color);
+      animation: popupFadeIn 0.3s ease-out;
+    }
+
+    @keyframes popupFadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .popup-gif {
+      max-width: 160px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 15px;
+      border-radius: 8px;
+    }
+
+    .popup-title {
+      color: var(--danger-color);
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .popup-message {
+      font-size: 0.95rem;
+      color: var(--text-color);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .popup-button {
+      background-color: var(--primary-color);
+      color: #ffffff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .popup-button:hover {
+      background-color: var(--accent-color);
+    }
+
+    .popup-button:active {
+      transform: scale(0.98);
+    }
+
     /* Adaptación para dispositivos móviles */
     @media (max-width: 520px) {
       .header h1 { font-size: 1.4rem; }
@@ -352,6 +433,18 @@
   </style>
 </head>
 <body>
+
+  <!-- Pop-up de Alerta Inicial -->
+  <div class="popup-overlay" id="alertPopup">
+    <div class="popup-card">
+      <img src="alerta.gif" alt="Alerta Ciberseguridad" class="popup-gif">
+      <h2 class="popup-title">⚠️ ¡ALERTA DE SEGURIDAD!</h2>
+      <p class="popup-message">
+        Has accedido a un enlace mediante un código QR no verificado. Si esta hubiese sido una amenaza real, tus datos personales o contraseñas institucionales podrían estar comprometidos.
+      </p>
+      <button class="popup-button" id="closePopupBtn">Entendido, deseo aprender más</button>
+    </div>
+  </div>
 
   <div class="container">
     <div class="header">
@@ -440,6 +533,14 @@
   </div>
 
   <script>
+    // Lógica para cerrar el Pop-up de Alerta
+    const alertPopup = document.getElementById('alertPopup');
+    const closePopupBtn = document.getElementById('closePopupBtn');
+
+    closePopupBtn.addEventListener('click', () => {
+      alertPopup.style.display = 'none';
+    });
+
     // Configuración de la métrica de Apps Script
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz46cV3T3jLKVrEfNx19GhDAnxFpCLLje2gq-SLxRV_IHUHHFwJQNNFpSOq3mIVCAo32Q/exec";
 
