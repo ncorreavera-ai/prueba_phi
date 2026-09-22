@@ -11,6 +11,7 @@
       --warning-bg: #fff3cd;      /* Fondo de advertencia */
       --warning-border: #ffeba2;  /* Borde de advertencia */
       --warning-text: #856404;    /* Texto de advertencia */
+      --danger-color: #e63946;    /* Rojo de alerta para URLs sospechosas */
       --bg-color: #f4f7f6;
       --card-bg: #ffffff;
       --text-color: #2c3e50;
@@ -187,21 +188,71 @@
       margin-bottom: 12px;
     }
 
-    /* Imagen interactiva (click para agrandar) */
-    .phone-qr-img {
+    /* Nueva Sección para ejemplos de enlaces sospechosos */
+    .suspicious-section {
+      background-color: #fff5f5;
+      border: 1px solid #fed7d7;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+
+    .suspicious-header {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .suspicious-title {
+      color: var(--danger-color);
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .suspicious-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .suspicious-card {
+      background-color: #ffffff;
+      border: 1px solid #fecaca;
+      border-radius: 8px;
+      padding: 8px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Estilos e interacción de las imágenes ampliables */
+    .zoomable-img {
       max-width: 100%;
       max-height: 380px;
       width: auto;
       height: auto;
-      border-radius: 12px;
+      border-radius: 8px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
       border: 1px solid #cbd5e1;
       cursor: zoom-in;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .phone-qr-img:hover {
-      transform: scale(1.02);
+    .suspicious-card .zoomable-img {
+      max-height: 180px;
+      width: 100%;
+      object-fit: cover;
+      box-shadow: none;
+      border: 1px solid #e2e8f0;
+    }
+
+    .zoomable-img:hover {
+      transform: scale(1.03);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
     }
 
@@ -286,8 +337,16 @@
         width: 110px;
       }
 
-      .phone-qr-img {
+      .zoomable-img {
         max-height: 280px;
+      }
+
+      .suspicious-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .suspicious-card .zoomable-img {
+        max-height: 220px;
       }
     }
   </style>
@@ -339,12 +398,31 @@
       <!-- Sección Independiente para la Imagen de Demostración del Teléfono -->
       <div class="example-section">
         <p class="example-subtitle">Ejemplo visual de verificación de enlace seguro en tu dispositivo:</p>
-        <img src="telefonoQR.jpg" alt="Verificación de URL en dispositivo móvil" class="phone-qr-img" id="zoomableImg">
+        <img src="telefonoQR.jpg" alt="Verificación de URL en dispositivo móvil" class="zoomable-img">
         <span class="zoom-hint">🔍 Haz clic en la imagen para ampliarla</span>
       </div>
 
+      <!-- Nueva Sección: Ejemplos de URLs Sospechosas -->
+      <div class="suspicious-section">
+        <div class="suspicious-header">
+          <h3 class="suspicious-title">🚨 Ejemplos de enlaces e invitaciones sospechosas:</h3>
+        </div>
+        <div class="suspicious-grid">
+          <div class="suspicious-card">
+            <img src="enlacesospechoso1.png" alt="Ejemplo de enlace sospechoso 1" class="zoomable-img">
+          </div>
+          <div class="suspicious-card">
+            <img src="enlacesospechoso2.png" alt="Ejemplo de enlace sospechoso 2" class="zoomable-img">
+          </div>
+          <div class="suspicious-card">
+            <img src="enlacesospechoso3.png" alt="Ejemplo de enlace sospechoso 3" class="zoomable-img">
+          </div>
+        </div>
+        <span class="zoom-hint" style="text-align: center;">🔍 Haz clic en cualquier imagen para verla en detalle</span>
+      </div>
+
       <div class="footer-note">
-        🔒 <em>Esta actividad es strictly educativa y no recolecta contraseñas ni información sensible. Tu ingreso ha sido contabilizado únicamente para métricas institucionales de concientización.</em>
+        🔒 <em>Esta actividad es estrictamente educativa y no recolecta contraseñas ni información sensible. Tu ingreso ha sido contabilizado únicamente para métricas institucionales de concientización.</em>
       </div>
     </div>
   </div>
@@ -352,7 +430,7 @@
   <!-- Modal de Ampliación (Lightbox) -->
   <div class="lightbox-modal" id="lightboxModal">
     <span class="lightbox-close" id="lightboxClose">&times;</span>
-    <img src="telefonoQR.jpg" alt="Verificación de URL ampliada" id="lightboxImg">
+    <img src="" alt="Vista ampliada" id="lightboxImg">
   </div>
 
   <script>
@@ -382,13 +460,17 @@
       }
     });
 
-    // Lógica para ampliar la imagen (Lightbox)
-    const zoomableImg = document.getElementById('zoomableImg');
+    // Lógica para ampliar cualquier imagen con la clase 'zoomable-img'
     const lightboxModal = document.getElementById('lightboxModal');
-    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const zoomableImages = document.querySelectorAll('.zoomable-img');
 
-    zoomableImg.addEventListener('click', () => {
-      lightboxModal.classList.add('active');
+    zoomableImages.forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxModal.classList.add('active');
+      });
     });
 
     lightboxModal.addEventListener('click', () => {
