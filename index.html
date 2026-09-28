@@ -15,6 +15,9 @@
       --bg-color: #f4f7f6;
       --card-bg: #ffffff;
       --text-color: #2c3e50;
+      --info-bg: #e3f2fd;       /* Azul muy claro para el fondo */
+      --info-border: #90caf9;   /* Azul intermedio para el borde lateral (opcional) */
+      --info-text: #0d47a1;     /* Azul oscuro/marino para el texto */
     }
 
     * {
@@ -93,7 +96,7 @@
 
     .info-box {
       background-color: var(--info-bg);
-      border-left: 5px solid var(--info-text);
+      border-left: 5px solid var(--info-text); /* O puedes usar var(--info-border) */
       color: var(--info-text);
       padding: 16px;
       border-radius: 8px;
@@ -484,7 +487,7 @@
         </p>
       </div>
 
-      <div class="alert-box">
+      <div class="info-box">
         Recuerda que el uso de un QR siempre se dará a conocer por los medios oficiales de la institución (Correo, Página Web, Televisores de Información.)
       </div>
       
