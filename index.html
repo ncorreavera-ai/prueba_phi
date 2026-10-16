@@ -54,17 +54,23 @@
       text-align: center;
     }
 
-    .logo-container {
+.logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px; /* Espacio entre ambos logos */
+      flex-wrap: wrap;
       margin-bottom: 15px;
     }
 
     .logo-img {
-      max-width: 220px;
-      height: auto;
+      max-height: 50px; /* Altura controlada para mantener el equilibrio visual */
+      width: auto;
       background-color: #ffffff;
-      padding: 8px 15px;
+      padding: 6px 12px;
       border-radius: 8px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      object-fit: contain;
     }
 
     .header h1 {
@@ -462,14 +468,16 @@
     </div>
   </div>
 
-  <div class="container">
+<div class="container">
     <div class="header">
       <div class="logo-container">
-        <!-- Logo Institucional -->
+        <!-- Primer Logo Institucional -->
         <img src="logoHospitalRegional.jpg" alt="Hospital Regional de Ñuble" class="logo-img">
+        <!-- Segundo Logo Institucional -->
+        <img src="Hospital Clínico Herminda Martín.png" alt="Hospital Clínico Herminda Martín" class="logo-img">
       </div>
       <h1><strong>CUIDADO, ACCEDISTE A UN QR SIN SABER SU PROCEDENCIA</strong></h1>
-      </div>
+    </div>
 
     <div class="content">
       <div class="alert-box">
